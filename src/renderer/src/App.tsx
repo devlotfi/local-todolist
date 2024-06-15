@@ -1,14 +1,10 @@
-import SidebarLayout from './layout/sidebar-layout.component'
-import TitleBarLayout from './layout/title-bar-layout.component'
+import { RouterProvider } from 'react-router-dom';
+import useRouter from './hooks/use-router.hook';
 
 const App = (): JSX.Element => {
-  return (
-    <TitleBarLayout>
-      <SidebarLayout>
-        <h1>lol</h1>
-      </SidebarLayout>
-    </TitleBarLayout>
-  )
-}
+  const { router } = useRouter();
 
-export default App
+  return <RouterProvider router={router}></RouterProvider>;
+};
+
+export default App;

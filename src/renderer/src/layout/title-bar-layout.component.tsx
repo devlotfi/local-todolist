@@ -1,16 +1,30 @@
 import {
   faBars,
+  faCheck,
+  faMoon,
+  faPlus,
+  faSun,
   faTimes,
   faWindowMaximize,
   faWindowMinimize,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useContext } from 'react';
 import Logo from '../assets/svg/logo.svg';
+import { Theme, ThemeContext } from '@renderer/context/theme.context';
 
 const TitleBarLayout = ({ children }: PropsWithChildren): JSX.Element => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  const showAddGroupModal = (): void => {
+    const modal = document.getElementById(
+      'add-group-modal'
+    ) as HTMLDialogElement;
+    modal.showModal();
+  };
+
   return (
-    <div className="flex flex-col h-screen w-screen bg-base-300">
+    <div className="flex flex-col h-screen w-screen bg-base-100">
       <div className="drag navbar px-[0.5rem] min-h-[3rem] p-[0.2rem] bg-base-100 text-base-content">
         <div className="flex-none">
           <label
@@ -25,6 +39,54 @@ const TitleBarLayout = ({ children }: PropsWithChildren): JSX.Element => {
           <a className="no-drag hidden md:flex btn btn-sm btn-ghost text-xl">
             Local Todolist
           </a>
+
+          <div className="dropdown no-drag">
+            <div tabIndex={0} role="button" className="btn btn-sm btn-ghost">
+              Theme
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content border-base-300 border-[1px] z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a onClick={() => setTheme(Theme.LIGHT)}>
+                  <FontAwesomeIcon icon={faSun}></FontAwesomeIcon> Light{' '}
+                  {theme === Theme.LIGHT ? (
+                    <FontAwesomeIcon
+                      className="text-primary"
+                      icon={faCheck}
+                    ></FontAwesomeIcon>
+                  ) : null}
+                </a>
+              </li>
+              <li>
+                <a onClick={() => setTheme(Theme.DARK)}>
+                  <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon> Dark
+                  {theme === Theme.DARK ? (
+                    <FontAwesomeIcon
+                      className="text-primary"
+                      icon={faCheck}
+                    ></FontAwesomeIcon>
+                  ) : null}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="dropdown no-drag">
+            <div tabIndex={0} role="button" className="btn btn-sm btn-ghost">
+              Group
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content border-base-300 border-[1px] z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a onClick={showAddGroupModal}>
+                  <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> Add group
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div className="flex">

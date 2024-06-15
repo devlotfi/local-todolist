@@ -1,13 +1,16 @@
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { PropsWithChildren } from 'react';
+import GroupItem from '@renderer/components/group-item.component';
+import { Outlet, useParams } from 'react-router-dom';
 
-const SidebarLayout = ({ children }: PropsWithChildren): JSX.Element => {
+const SidebarLayout = (): JSX.Element => {
+  const { groupId } = useParams();
+
   return (
     <div className="drawer md:drawer-open">
       <input id="app-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content max-h-[calc(100vh-3rem)] flex flex-col items-center justify-center">
-        {children}
+      <div className="drawer-content h-[calc(100vh-3rem)] min-h-[calc(100vh-3rem)] flex flex-col">
+        <Outlet></Outlet>
       </div>
       <div className="drawer-side mt-[3rem] md:mt-0 max-h-[calc(100vh-3rem)]">
         <label
@@ -20,15 +23,14 @@ const SidebarLayout = ({ children }: PropsWithChildren): JSX.Element => {
             <FontAwesomeIcon
               className="text-primary mr-[0.5rem]"
               icon={faList}
-            ></FontAwesomeIcon>{' '}
+            ></FontAwesomeIcon>
             Groups
           </div>
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
+
+          <GroupItem
+            selected={true}
+            group={{ name: 'lol', id: 'lola' }}
+          ></GroupItem>
         </ul>
       </div>
     </div>
