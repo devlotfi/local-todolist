@@ -12,7 +12,6 @@ function createWindow(): BrowserWindow {
     width: 900,
     height: 670,
     show: false,
-    titleBarStyle: 'hidden',
     frame: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),

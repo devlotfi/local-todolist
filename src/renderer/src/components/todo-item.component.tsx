@@ -1,21 +1,43 @@
 import {
   faCheck,
+  faCheckCircle,
   faEllipsisH,
   faTimes,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Todo } from '@prisma/client';
+import { DELETE_TODO, EDIT_TODO } from '@renderer/react-query/mutations';
+import { TODO_LIST } from '@renderer/react-query/queries';
 import { cn } from '@renderer/utils/cn';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 interface TodoItemProps {
   todo: Todo;
 }
 
 const TodoItem = ({ todo }: TodoItemProps): JSX.Element => {
+  const queryClient = useQueryClient();
+  const { mutate: mutateEdit } = useMutation({
+    mutationFn: EDIT_TODO,
+    onSuccess() {
+      queryClient.invalidateQueries({
+        queryKey: [TODO_LIST.name],
+      });
+    },
+  });
+  const { mutate: mutateDelete } = useMutation({
+    mutationFn: DELETE_TODO,
+    onSuccess() {
+      queryClient.invalidateQueries({
+        queryKey: [TODO_LIST.name],
+      });
+    },
+  });
+
   return (
-    <tr>
-      <td>
+    <div className="flex bg-base-200 justify-between items-center mb-[1rem] rounded-xl p-[0.3rem] w-full">
+      <div className="flex items-center">
         <div className="dropdown">
           <div
             tabIndex={0}
@@ -30,35 +52,62 @@ const TodoItem = ({ todo }: TodoItemProps): JSX.Element => {
           >
             <li>
               {todo.completed ? (
-                <a>
+                <a
+                  onClick={() =>
+                    mutateEdit({
+                      id: todo.id,
+                      completed: false,
+                    })
+                  }
+                >
                   <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon> Mark as not
                   complete
                 </a>
               ) : (
-                <a className="text-error">
+                <a
+                  onClick={() =>
+                    mutateEdit({
+                      id: todo.id,
+                      completed: true,
+                    })
+                  }
+                >
                   <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon> Mark as
                   complete
                 </a>
               )}
             </li>
             <li>
-              <a className="text-error">
+              <a
+                onClick={() =>
+                  mutateDelete({
+                    id: todo.id,
+                  })
+                }
+                className="text-error"
+              >
                 <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon> Delete
               </a>
             </li>
           </ul>
         </div>
-      </td>
-      <td className={cn(todo.completed && 'line-through')}>{todo.title}</td>
-      <td>
-        {todo.completed ? (
-          <FontAwesomeIcon
-            className="text-primary"
-            icon={faCheck}
-          ></FontAwesomeIcon>
-        ) : null}
-      </td>
-    </tr>
+        <div
+          className={cn(
+            'mx-[0.5rem] break-all',
+            todo.completed && 'line-through'
+          )}
+        >
+          {todo.title}
+        </div>
+      </div>
+
+      {todo.completed ? (
+        <FontAwesomeIcon
+          className="text-primary text-[1.5rem] mr-[0.3rem]"
+          icon={faCheckCircle}
+        ></FontAwesomeIcon>
+      ) : null}
+    </div>
   );
 };
 

@@ -1,7 +1,10 @@
 import { faPen, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Group } from '@prisma/client';
+import { EDIT_GROUP } from '@renderer/react-query/mutations';
+import { GROUP_LIST } from '@renderer/react-query/queries';
 import { cn } from '@renderer/utils/cn';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -18,6 +21,17 @@ const EditGroupForm = ({
   setEditing,
   group,
 }: EditGroupFormProps): JSX.Element => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: EDIT_GROUP,
+    onSuccess() {
+      queryClient.invalidateQueries({
+        queryKey: [GROUP_LIST.name],
+      });
+      setEditing(false);
+    },
+  });
+
   const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: {
@@ -25,7 +39,10 @@ const EditGroupForm = ({
       },
       validationSchema,
       onSubmit(values) {
-        console.log(values);
+        mutate({
+          id: group.id,
+          name: values.name,
+        });
       },
     });
 

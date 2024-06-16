@@ -1,7 +1,11 @@
 import { faPen, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ADD_TODO } from '@renderer/react-query/mutations';
+import { TODO_LIST } from '@renderer/react-query/queries';
 import { cn } from '@renderer/utils/cn';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useFormik } from 'formik';
+import { useRef } from 'react';
 import * as yup from 'yup';
 
 const validationSchema = yup.object({
@@ -13,6 +17,18 @@ interface AddTodoModalProps {
 }
 
 const AddTodoModal = ({ groupId }: AddTodoModalProps): JSX.Element => {
+  const modalRef = useRef<HTMLDialogElement>(null);
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: ADD_TODO,
+    onSuccess() {
+      queryClient.invalidateQueries({
+        queryKey: [TODO_LIST.name],
+      });
+      modalRef.current?.close();
+    },
+  });
+
   const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: {
@@ -20,12 +36,15 @@ const AddTodoModal = ({ groupId }: AddTodoModalProps): JSX.Element => {
       },
       validationSchema,
       onSubmit(values) {
-        console.log(values);
+        mutate({
+          groupId,
+          title: values.title,
+        });
       },
     });
 
   return (
-    <dialog id="add-todo-modal" className="modal">
+    <dialog ref={modalRef} id="add-todo-modal" className="modal">
       <div className="modal-box">
         <h3 className="mb-[1rem] font-bold text-lg">
           <FontAwesomeIcon

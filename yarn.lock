@@ -1216,6 +1216,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:5.45.0":
+  version: 5.45.0
+  resolution: "@tanstack/query-core@npm:5.45.0"
+  checksum: 10c0/b1adb0e44a6294f8fc63d1f3915e657e29799ae761012a49430f2694f9fd4f7041984949f61d412ad43e5aaba3ea880ab89b3d2c309cb2860a2913029e9062e9
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.45.0":
+  version: 5.45.0
+  resolution: "@tanstack/react-query@npm:5.45.0"
+  dependencies:
+    "@tanstack/query-core": "npm:5.45.0"
+  peerDependencies:
+    react: ^18.0.0
+  checksum: 10c0/0bff05c1a048c0f77f85d40adb165785b703b521a2e0f8cc6cd02185f41acd13d75b441ebe1b3887090a155f1f41c90e40079f567a1f00ed34f1f3908531dbb2
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -4529,6 +4547,7 @@ __metadata:
     "@fortawesome/free-solid-svg-icons": "npm:^6.5.2"
     "@fortawesome/react-fontawesome": "npm:^0.2.2"
     "@prisma/client": "npm:^5.15.0"
+    "@tanstack/react-query": "npm:^5.45.0"
     "@types/node": "npm:^20.14.2"
     "@types/react": "npm:^18.2.48"
     "@types/react-dom": "npm:^18.2.18"

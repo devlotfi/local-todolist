@@ -4,6 +4,8 @@ directories:
   buildResources: build
 extraResources:
   - './prisma/dev.db'
+  - 'node_modules/.prisma/**/*'
+  - 'node_modules/@prisma/**/*'
 files:
   - '!**/.vscode/*'
   - '!src/*'

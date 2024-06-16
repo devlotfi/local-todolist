@@ -1,5 +1,6 @@
 import SidebarLayout from '@renderer/layout/sidebar-layout.component';
 import TitleBarLayout from '@renderer/layout/title-bar-layout.component';
+import HomePage from '@renderer/pages/home.page';
 import TodoList from '@renderer/pages/todo-list.component';
 import { createHashRouter } from 'react-router-dom';
 
@@ -16,7 +17,7 @@ const useRouter = () => {
       children: [
         {
           path: '/',
-          element: <h1>Select a group to get started</h1>,
+          element: <HomePage></HomePage>,
         },
         {
           path: '/:groupId',
