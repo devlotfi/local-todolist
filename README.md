@@ -1,6 +1,8 @@
+<img height="200px" src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/logo.svg">
+
 # local-todolist
 
-An Electron application with React and TypeScript
+A simple todolist app created using Electron-Vite that stores its data in an Sqlite database using Prisma
 
 ## Recommended IDE Setup
 
