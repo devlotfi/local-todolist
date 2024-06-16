@@ -31,7 +31,8 @@ const GroupItem = ({ group, selected }: GroupItemProps): JSX.Element => {
             <div
               onClick={() => navigate(`/${group.id}`)}
               className={cn(
-                selected && 'text-primary',
+                selected &&
+                  'text-primary active:!text-primary focus:!text-primary active:!bg-base-300',
                 'bg-base-300 p-[0.7rem] px-[1rem]'
               )}
             >

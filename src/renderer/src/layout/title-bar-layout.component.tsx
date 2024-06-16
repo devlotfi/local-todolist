@@ -12,9 +12,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { PropsWithChildren, useContext } from 'react';
 import Logo from '../assets/svg/logo.svg';
 import { Theme, ThemeContext } from '@renderer/context/theme.context';
+import { IPCMessages } from '@shared/ipc-messages';
 
 const TitleBarLayout = ({ children }: PropsWithChildren): JSX.Element => {
   const { theme, setTheme } = useContext(ThemeContext);
+
+  const minimize = (): void => {
+    window.electron.ipcRenderer.send(IPCMessages.MINIMIZE);
+  };
+  const maximize = (): void => {
+    window.electron.ipcRenderer.send(IPCMessages.MAXIMIZE);
+  };
+  const close = (): void => {
+    window.electron.ipcRenderer.send(IPCMessages.CLOSE);
+  };
 
   const showAddGroupModal = (): void => {
     const modal = document.getElementById(
@@ -90,13 +101,22 @@ const TitleBarLayout = ({ children }: PropsWithChildren): JSX.Element => {
         </div>
 
         <div className="flex">
-          <button className="no-drag btn btn-sm btn-square ml-[0.3rem]">
+          <button
+            onClick={() => minimize()}
+            className="no-drag btn btn-sm btn-square ml-[0.3rem]"
+          >
             <FontAwesomeIcon icon={faWindowMinimize}></FontAwesomeIcon>
           </button>
-          <button className="no-drag btn btn-sm btn-square ml-[0.3rem]">
+          <button
+            onClick={() => maximize()}
+            className="no-drag btn btn-sm btn-square ml-[0.3rem]"
+          >
             <FontAwesomeIcon icon={faWindowMaximize}></FontAwesomeIcon>
           </button>
-          <button className="no-drag btn btn-sm btn-square ml-[0.3rem]">
+          <button
+            onClick={() => close()}
+            className="no-drag btn btn-sm btn-square ml-[0.3rem]"
+          >
             <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
           </button>
         </div>
