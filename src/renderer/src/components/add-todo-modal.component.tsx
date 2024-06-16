@@ -5,14 +5,18 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 const validationSchema = yup.object({
-  name: yup.string().min(2).max(256).required(),
+  title: yup.string().min(2).max(256).required(),
 });
 
-const AddGroupModal = (): JSX.Element => {
+interface AddTodoModalProps {
+  groupId: string;
+}
+
+const AddTodoModal = ({ groupId }: AddTodoModalProps): JSX.Element => {
   const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues: {
-        name: '',
+        title: '',
       },
       validationSchema,
       onSubmit(values) {
@@ -21,44 +25,46 @@ const AddGroupModal = (): JSX.Element => {
     });
 
   return (
-    <dialog id="add-group-modal" className="modal">
+    <dialog id="add-todo-modal" className="modal">
       <div className="modal-box">
         <h3 className="mb-[1rem] font-bold text-lg">
           <FontAwesomeIcon
             className="text-primary mr-[0.5rem]"
             icon={faPlus}
           ></FontAwesomeIcon>
-          Add group
+          Add todo
         </h3>
 
         <form onSubmit={handleSubmit}>
           <div className="form-control">
             <label
               className={cn(
-                errors.name && touched.name && 'input-error',
+                errors.title && touched.title && 'input-error',
                 `input input-bordered flex items-center gap-2`
               )}
             >
               <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
               <input
                 type="text"
-                name="name"
-                placeholder="Name"
-                value={values.name}
+                name="title"
+                placeholder="Title"
+                value={values.title}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
             </label>
 
-            {errors.name && touched.name ? (
+            {errors.title && touched.title ? (
               <div className="label">
-                <span className="label-text-alt text-error">{errors.name}</span>
+                <span className="label-text-alt text-error">
+                  {errors.title}
+                </span>
               </div>
             ) : null}
           </div>
 
           <button className="btn btn-primary mt-[1rem] w-full" type="submit">
-            <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> Add group
+            <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> Add todo
           </button>
         </form>
       </div>
@@ -69,4 +75,4 @@ const AddGroupModal = (): JSX.Element => {
   );
 };
 
-export default AddGroupModal;
+export default AddTodoModal;

@@ -31,6 +31,14 @@ const SidebarLayout = (): JSX.Element => {
             selected={true}
             group={{ name: 'lol', id: 'lola' }}
           ></GroupItem>
+          <GroupItem
+            selected={true}
+            group={{ name: 'lol', id: 'lola' }}
+          ></GroupItem>
+          <GroupItem
+            selected={true}
+            group={{ name: 'lol', id: 'lola' }}
+          ></GroupItem>
         </ul>
       </div>
     </div>

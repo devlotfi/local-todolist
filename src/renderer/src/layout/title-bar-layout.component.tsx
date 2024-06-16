@@ -25,7 +25,7 @@ const TitleBarLayout = ({ children }: PropsWithChildren): JSX.Element => {
 
   return (
     <div className="flex flex-col h-screen w-screen bg-base-100">
-      <div className="drag navbar px-[0.5rem] min-h-[3rem] p-[0.2rem] bg-base-100 text-base-content">
+      <div className="drag navbar border-b-[1px] border-base-300 px-[0.5rem] min-h-[3rem] p-[0.2rem] bg-base-100 text-base-content">
         <div className="flex-none">
           <label
             htmlFor="app-drawer"

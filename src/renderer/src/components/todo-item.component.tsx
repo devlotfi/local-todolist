@@ -6,6 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Todo } from '@prisma/client';
+import { cn } from '@renderer/utils/cn';
 
 interface TodoItemProps {
   todo: Todo;
@@ -48,10 +49,13 @@ const TodoItem = ({ todo }: TodoItemProps): JSX.Element => {
           </ul>
         </div>
       </td>
-      <td>{todo.title}</td>
+      <td className={cn(todo.completed && 'line-through')}>{todo.title}</td>
       <td>
         {todo.completed ? (
-          <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon>
+          <FontAwesomeIcon
+            className="text-primary"
+            icon={faCheck}
+          ></FontAwesomeIcon>
         ) : null}
       </td>
     </tr>
