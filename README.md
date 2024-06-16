@@ -2,7 +2,13 @@
 
 # local-todolist
 
-A simple todolist app created using Electron-Vite that stores its data in an Sqlite database using Prisma
+A simple todolist app created using Electron-Vite that stores its data in an a local Sqlite database using Prisma.
+This app also uses:
+- DaisyUI as a UI libraary
+- Formik fore handling forms
+- Tailwind CSS for styles
+- ReactQuery for handling data fetching
+
 
 ## Recommended IDE Setup
 
