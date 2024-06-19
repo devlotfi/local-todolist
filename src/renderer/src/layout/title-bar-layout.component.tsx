@@ -46,8 +46,8 @@ const TitleBarLayout = ({ children }: PropsWithChildren): JSX.Element => {
     <div className="flex flex-col h-screen w-screen bg-base-100">
       <div
         className={cn(
-          data === 'Darwin' && 'pl-[4.5rem]',
-          'drag navbar z-50 border-b-[1px] border-base-300 min-h-[3rem] p-[0.2rem] px-[0.5rem] bg-base-100 text-base-content'
+          'drag navbar z-50 border-b-[1px] border-base-300 min-h-[3rem] p-[0.2rem] px-[0.5rem] bg-base-100 text-base-content',
+          data === 'Darwin' && 'pl-[4.5rem]'
         )}
       >
         <div className="flex-none">
