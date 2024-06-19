@@ -1,5 +1,6 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import { IPCMessages } from '../shared/ipc-messages';
+import os from 'os';
 
 export const registerTitleBarIPCHandlers = (
   mainWindow: BrowserWindow
@@ -18,5 +19,9 @@ export const registerTitleBarIPCHandlers = (
 
   ipcMain.on(IPCMessages.CLOSE, () => {
     mainWindow.close();
+  });
+
+  ipcMain.handle(IPCMessages.CURRENT_OS, () => {
+    return os.type();
   });
 };

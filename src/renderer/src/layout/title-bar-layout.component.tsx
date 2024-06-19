@@ -13,9 +13,17 @@ import { PropsWithChildren, useContext } from 'react';
 import Logo from '../assets/svg/logo.svg';
 import { Theme, ThemeContext } from '@renderer/context/theme.context';
 import { IPCMessages } from '@shared/ipc-messages';
+import { useQuery } from '@tanstack/react-query';
+import { CURRENT_OS } from '@renderer/react-query/queries';
+import { cn } from '@renderer/utils/cn';
 
 const TitleBarLayout = ({ children }: PropsWithChildren): JSX.Element => {
   const { theme, setTheme } = useContext(ThemeContext);
+
+  const { data } = useQuery({
+    queryFn: CURRENT_OS,
+    queryKey: [CURRENT_OS.name],
+  });
 
   const minimize = (): void => {
     window.electron.ipcRenderer.send(IPCMessages.MINIMIZE);
@@ -36,7 +44,12 @@ const TitleBarLayout = ({ children }: PropsWithChildren): JSX.Element => {
 
   return (
     <div className="flex flex-col h-screen w-screen bg-base-100">
-      <div className="drag navbar z-50 border-b-[1px] border-base-300 px-[0.5rem] min-h-[3rem] p-[0.2rem] bg-base-100 text-base-content">
+      <div
+        className={cn(
+          data === 'Darwin' && 'pl-[4.5rem]',
+          'drag navbar z-50 border-b-[1px] border-base-300 min-h-[3rem] p-[0.2rem] px-[0.5rem] bg-base-100 text-base-content'
+        )}
+      >
         <div className="flex-none">
           <label
             htmlFor="app-drawer"
@@ -100,26 +113,28 @@ const TitleBarLayout = ({ children }: PropsWithChildren): JSX.Element => {
           </div>
         </div>
 
-        <div className="flex">
-          <button
-            onClick={() => minimize()}
-            className="no-drag btn btn-sm btn-square ml-[0.3rem]"
-          >
-            <FontAwesomeIcon icon={faWindowMinimize}></FontAwesomeIcon>
-          </button>
-          <button
-            onClick={() => maximize()}
-            className="no-drag btn btn-sm btn-square ml-[0.3rem]"
-          >
-            <FontAwesomeIcon icon={faWindowMaximize}></FontAwesomeIcon>
-          </button>
-          <button
-            onClick={() => close()}
-            className="no-drag btn btn-sm btn-square ml-[0.3rem]"
-          >
-            <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
-          </button>
-        </div>
+        {data !== 'Darwin' ? (
+          <div className="flex">
+            <button
+              onClick={() => minimize()}
+              className="no-drag btn btn-sm btn-square ml-[0.3rem]"
+            >
+              <FontAwesomeIcon icon={faWindowMinimize}></FontAwesomeIcon>
+            </button>
+            <button
+              onClick={() => maximize()}
+              className="no-drag btn btn-sm btn-square ml-[0.3rem]"
+            >
+              <FontAwesomeIcon icon={faWindowMaximize}></FontAwesomeIcon>
+            </button>
+            <button
+              onClick={() => close()}
+              className="no-drag btn btn-sm btn-square ml-[0.3rem]"
+            >
+              <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
+            </button>
+          </div>
+        ) : null}
       </div>
       {children}
     </div>

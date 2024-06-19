@@ -2,6 +2,7 @@ export enum IPCMessages {
   MINIMIZE = 'MINIMIZE',
   MAXIMIZE = 'MAXIMIZE',
   CLOSE = 'CLOSE',
+  CURRENT_OS = 'CURRENT_OS',
 
   GROUP_LIST = 'GROUP_LIST',
   ADD_GROUP = 'ADD_GROUP',
