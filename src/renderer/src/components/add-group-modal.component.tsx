@@ -21,21 +21,29 @@ const AddGroupModal = (): JSX.Element => {
       queryClient.invalidateQueries({
         queryKey: [GROUP_LIST.name],
       });
+      resetForm();
       modalRef.current?.close();
     },
   });
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
-    useFormik({
-      initialValues: {
-        name: '',
-      },
-      validationSchema,
-      onSubmit(values) {
-        mutate({
-          name: values.name,
-        });
-      },
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    resetForm,
+  } = useFormik({
+    initialValues: {
+      name: '',
+    },
+    validationSchema,
+    onSubmit(values) {
+      mutate({
+        name: values.name,
+      });
+    },
+  });
 
   return (
     <dialog ref={modalRef} id="add-group-modal" className="modal">

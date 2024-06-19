@@ -25,23 +25,31 @@ const AddTodoModal = ({ groupId }: AddTodoModalProps): JSX.Element => {
       queryClient.invalidateQueries({
         queryKey: [TODO_LIST.name],
       });
+      resetForm();
       modalRef.current?.close();
     },
   });
 
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
-    useFormik({
-      initialValues: {
-        title: '',
-      },
-      validationSchema,
-      onSubmit(values) {
-        mutate({
-          groupId,
-          title: values.title,
-        });
-      },
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    resetForm,
+  } = useFormik({
+    initialValues: {
+      title: '',
+    },
+    validationSchema,
+    onSubmit(values) {
+      mutate({
+        groupId,
+        title: values.title,
+      });
+    },
+  });
 
   return (
     <dialog ref={modalRef} id="add-todo-modal" className="modal">
