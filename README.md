@@ -1,4 +1,4 @@
-<img height="200px" src="github-assets/logo.svg">
+<img height="200px" src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/logo.svg">
 
 # local-todolist
 
@@ -10,8 +10,8 @@ This app also uses:
 - ReactQuery for handling data fetching
 
 ## Preview
-<img src="github-assets/preview-1.png">
-<img src="github-assets/preview-2.png">
+<img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-1.png">
+<img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-2.png">
 
 
 ## Recommended IDE Setup
