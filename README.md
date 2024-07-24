@@ -13,11 +13,6 @@ This app also uses:
 <img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-1.png">
 <img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-2.png">
 
-
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-
 ## Project Setup
 
 ### Install
