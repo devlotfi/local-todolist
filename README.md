@@ -1,4 +1,4 @@
-<img width="200px" src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/logo.svg">
+<img width="100px" height="100px" src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/logo.svg">
 
 # local-todolist
 
