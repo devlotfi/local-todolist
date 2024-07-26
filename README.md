@@ -1,21 +1,28 @@
 <img width="100px" height="100px" src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/logo.svg">
 
-# local-todolist
+# 📜 local-todolist
+A simple todolist app created using Electron-Vite that stores its data in an a local Sqlite database using Prisma
 
-A simple todolist app created using Electron-Vite that stores its data in an a local Sqlite database using Prisma.
-This app also uses:
-- DaisyUI as a UI libraary
-- Formik fore handling forms
-- Tailwind CSS for styles
-- ReactQuery for handling data fetching
+# 📌 Contents
+- [Tech stack](#-tech-stack)
+- [Preview](#-preview)
+- [Project setup](#-project-setup)
 
-## Preview
+# 💻 Tech stack
+<img src="https://skillicons.dev/icons?i=html,css,tailwind,react,electron,prisma,sqlite&perline=5" />
+
+# 📷 Preview
+
 <img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-1.png">
 <img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-2.png">
 
-## Project Setup
+# 📂 Project Setup
 
-### Install
+## Requirements
+- Node JS
+- Yarn
+
+## Install
 
 ```bash
 $ yarn
@@ -39,3 +46,6 @@ $ yarn build:mac
 # For Linux
 $ yarn build:linux
 ```
+
+
+
