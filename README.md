@@ -11,11 +11,6 @@ A simple todolist app created using Electron-Vite that stores its data in an a l
 # 💻 Tech stack
 <img src="https://skillicons.dev/icons?i=html,css,tailwind,react,electron,prisma,sqlite&perline=5" />
 
-# 📷 Preview
-
-<img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-1.png">
-<img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-2.png">
-
 # 📂 Project Setup
 
 ## Requirements
@@ -47,5 +42,9 @@ $ yarn build:mac
 $ yarn build:linux
 ```
 
+# 📷 Preview
+
+<img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-1.png">
+<img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-2.png">
 
 
