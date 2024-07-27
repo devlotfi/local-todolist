@@ -5,8 +5,8 @@ A simple todolist app created using Electron-Vite that stores its data in an a l
 
 # 📌 Contents
 - [Tech stack](#-tech-stack)
-- [Preview](#-preview)
 - [Project setup](#-project-setup)
+- [Preview](#-preview)
 
 # 💻 Tech stack
 <img src="https://skillicons.dev/icons?i=html,css,tailwind,react,electron,prisma,sqlite&perline=5" />
