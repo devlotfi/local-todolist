@@ -11,6 +11,19 @@ A simple todolist app created using Electron-Vite that stores its data in an a l
 # 💻 Tech stack
 <img src="https://skillicons.dev/icons?i=html,css,tailwind,react,electron,prisma,sqlite&perline=5" />
 
+<p float="left">
+  <img height="50px" src="https://github.com/devlotfi/stack-icons/blob/main/icons/html.svg">
+  <img height="50px" src="https://github.com/devlotfi/stack-icons/blob/main/icons/css.svg">
+  <img height="50px" src="https://github.com/devlotfi/stack-icons/blob/main/icons/tailwind.svg">
+  <img height="50px" src="https://github.com/devlotfi/stack-icons/blob/main/icons/react.svg">
+  <img height="50px" src="https://github.com/devlotfi/stack-icons/blob/main/icons/fontawesome.svg">
+  <img height="50px" src="https://github.com/devlotfi/stack-icons/blob/main/icons/daisyui.svg">
+  <img height="50px" src="https://github.com/devlotfi/stack-icons/blob/main/icons/formik.svg">
+  <img height="50px" src="https://github.com/devlotfi/stack-icons/blob/main/icons/electron.svg">
+  <img height="50px" src="https://github.com/devlotfi/stack-icons/blob/main/icons/prisma.svg">
+  <img height="50px" src="https://github.com/devlotfi/stack-icons/blob/main/icons/sqlite.svg">
+</p>
+
 # 📂 Project Setup
 
 ## Requirements
