@@ -1,4 +1,4 @@
-<img width="100px" height="100px" src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/logo.svg">
+<img width="100px" height="100px" src="https://raw.githubusercontent.com/devlotfi/local-todolist/main/github-assets/logo.svg">
 
 # 📜 local-todolist
 A simple todolist app created using Electron-Vite that stores its data in an a local Sqlite database using Prisma
@@ -56,7 +56,7 @@ $ yarn build:linux
 
 # 📷 Preview
 
-<img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-1.png">
-<img src="https://github.com/devlotfi/local-todolist/blob/main/github-assets/preview-2.png">
+<img src="https://raw.githubusercontent.com/devlotfi/local-todolist/main/github-assets/preview-1.png">
+<img src="https://raw.githubusercontent.com/devlotfi/local-todolist/main/github-assets/preview-2.png">
 
 
